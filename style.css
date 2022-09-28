@@ -1,0 +1,269 @@
+body {
+  padding: 0%;
+  margin: 0%;
+  width: auto;
+  height: auto;
+  background: rgb(20, 119, 140);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 119, 140, 1) 18%,
+    rgba(31, 206, 219, 1) 61%,
+    rgba(18, 227, 225, 1) 91%
+  );
+  font-family: sans-serif, Georgia, "Times New Roman", Times, serif;
+  color: white;
+}
+.main-flex-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0%;
+  margin: 0%;
+  width: auto;
+  height: auto;
+  background: rgb(20, 119, 140);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 119, 140, 1) 18%,
+    rgba(31, 206, 219, 1) 61%,
+    rgba(18, 227, 225, 1) 91%
+  );
+  font-family: sans-serif, Georgia, "Times New Roman", Times, serif;
+  color: white;
+}
+.window-and-todo-container {
+  display: flex;
+}
+.window-container {
+  color: yellow;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  position: relative;
+  column-gap: 2em;
+  row-gap: 1em;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  width: 116em;
+  height: max-content;
+  margin: 0em;
+  padding: 0em 2em 10em 2em;
+}
+.window-container-toggle {
+  width: 94em;
+}
+.window-box {
+  position: relative;
+}
+.window {
+  display: flex;
+  background-color: gold;
+  width: 12em;
+  height: 12em;
+  border: 3px solid rgb(20, 105, 140);
+  background-size: 12em 12em;
+  border-radius: 4em;
+}
+
+.window-name {
+  font-size: 1.5em;
+  text-align: center;
+  font-weight: 600;
+}
+/* todo container */
+.todo-container {
+  display: none;
+  flex-direction: column;
+  background: rgb(20, 105, 140);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 105, 140, 1) 18%,
+    rgba(20, 143, 194, 1) 61%,
+    rgba(42, 169, 222, 1) 91%
+  );
+  width: 30em;
+  height: min-content;
+  text-align: center;
+  margin: 0 1em 0 1em;
+  border-radius: 8px;
+  border: 3px solid rgb(20, 105, 140);
+}
+.todo-container-toggle {
+  display: flex;
+}
+
+.todo-container h2 {
+  margin: 1em;
+  font-weight: 700;
+}
+.todo-container p {
+  text-align: center;
+}
+.add-new-todo-input {
+  width: 18em;
+  height: 2em;
+  margin: 0em 0em 1em 2em;
+  padding: 0, 5em;
+}
+.add-new-todo {
+  height: auto;
+}
+.todo-ul-list {
+  height: auto;
+  list-style-type: none;
+}
+.todo-li-item {
+  font-size: 20px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+.todo-li-item-toogle {
+  text-decoration: line-through 0.1em solid gold;
+}
+.tools-panel {
+  display: inline-block;
+  width: auto;
+  margin: 0 1em 0 1em;
+}
+.add-new-todo-warning {
+  display: none;
+  font-weight: 600;
+  color: tomato;
+}
+
+/* Todo popup */
+
+.todo-popup {
+  text-align: center;
+  display: none;
+}
+.todo-popup-input {
+  width: 18em;
+  height: 2em;
+  margin: 1em 1em 1em 1em;
+  padding: 0, 5em;
+}
+.todo-popup .btn {
+  margin: 1em;
+}
+.todo-popup-warning {
+  display: none;
+  text-align: center;
+  font-weight: 600;
+  color: tomato;
+}
+/* end of todo */
+.delete-window-btn {
+  display: none;
+}
+.delete-window-btn-display {
+  display: inline-block;
+}
+.top-side {
+  display: flex;
+  height: 5em;
+  justify-content: flex-end;
+  padding: 2em 2em 0 0;
+}
+.btn {
+  background-color: transparent;
+  border: 0;
+  height: min-content;
+  width: min-content;
+}
+
+.btn :hover {
+  cursor: pointer;
+}
+
+.set-window-container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  width: auto;
+  height: max-content;
+}
+.set-window-container {
+  z-index: 10;
+}
+.set-window {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background: rgb(20, 105, 140);
+  background: linear-gradient(
+    90deg,
+    rgba(20, 105, 140, 1) 18%,
+    rgba(20, 143, 194, 1) 61%,
+    rgba(42, 169, 222, 1) 91%
+  );
+  width: 17.7em;
+  height: 34em;
+  padding: 1em;
+  border-radius: 8px;
+  border: 3px solid rgb(20, 105, 140);
+}
+.set-window {
+  z-index: 10;
+}
+.set-window-button-container {
+  flex-direction: row;
+  text-align: end;
+}
+.set-window .btn {
+  align-items: flex-end;
+}
+.input {
+  width: 20em;
+  height: 2em;
+  margin: 0;
+  padding: 0.5em;
+  border: 1px solid black;
+}
+
+.set-window p {
+  display: none;
+  font-style: italic;
+}
+.set-window-quick-add {
+  margin-top: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.set-window-container {
+  z-index: 10;
+}
+.set-window-quick-add img {
+  width: 2.5em;
+  padding: 0.2em;
+}
+.thank-u-mr-babkin {
+  text-decoration: none;
+  color: gold;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1em;
+}
+.night-mode-background-toogle {
+  background: rgb(57, 79, 82);
+  background: linear-gradient(
+    90deg,
+    rgba(57, 79, 82, 1) 27%,
+    rgba(64, 93, 101, 1) 42%,
+    rgba(67, 98, 111, 1) 60%,
+    rgba(67, 101, 103, 1) 92%
+  );
+}
+.night-mode-box-toogle {
+  background: rgb(99, 103, 65);
+  background: linear-gradient(
+    90deg,
+    rgba(99, 103, 65, 1) 27%,
+    rgba(114, 121, 57, 1) 42%,
+    rgba(133, 145, 53, 1) 60%,
+    rgba(119, 133, 57, 1) 92%
+  );
+}

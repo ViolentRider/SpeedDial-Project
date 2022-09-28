@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/97e29a6186.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-flex-container">
+    <!-- Top side -->
+    <div class="top-side">
+      
+      <button class="btn plus-btn">
+        <i class="fa-solid fa-square-plus fa-2xl"></i>
+      </button>
+      
+      <button class="btn ">
+        <i class="fa-solid fa-xmark fa-2xl show-delete-windows-btn"></i></button>
+        <button class="btn night-mode-btn">
+          <i class="fa-solid fa-moon fa-2xl"></i>
+        </button>
+      <button class="btn menu-btn">
+        <i class="fa-solid fa-list fa-2xl open-todo-btn"></i>
+      </button>
+    </div>
+    <!-- Add new window box -->
+    <div class="set-window-container">
+    <div class="set-window">
+      <div class="set-window-button-container">
+        <button class="btn accept-btn"><i class="fa-solid fa-square-check fa-2xl"></i></button>
+        <button class="btn close-window-btn">
+        <i class="fa-solid fa-square-xmark fa-2xl"></i></button>
+        
+      </div>
+      <h3>Webpage adress:</h2>
+      <input type="text" value="" class="input input-adress" placeholder="https://www.google.pl/"/>
+      <p class="warning input-adress-warning"></p>
+      <h3>Name:</h2>
+        <input type="text" value="" class="input input-name" placeholder="Google"/>
+        <p class="warning input-name-warning">Podaj nazwę strony</p>
+        <h3>Image url:</h2>
+            <input type="text" value="" class="input input-img" />
+            <p class="warning input-img-warning">Podaj adres url obrazu</p>
+            <h3>Quick add icons</h3>
+            <div class="set-window-quick-add">
+              
+              <img src="./images/quick-add-icons/google.png" alt="google-icon" class="icon google-icon">
+              <img src="./images/quick-add-icons/facebook.png" alt="facebook-icon" class="icon facebook-icon">
+              <img src="./images/quick-add-icons/instagram.png" alt="instagram-icon" class="icon instagram-icon">
+                    <img src="./images/quick-add-icons/twitter.png" alt="twitter-icon" class="icon twitter-icon">
+                    <img src="./images/quick-add-icons/tiktok.png" alt="tiktok-icon" class="icon tiktok-icon">
+              <img src="./images/quick-add-icons/github.png" alt="github-icon" class="icon github-icon">
+              <img src="./images/quick-add-icons/linkedin.png" alt="linkedin-icon" class="icon linkedin-icon">
+              <img src="./images/quick-add-icons/netflix.png" alt="netflix-icon" class="icon netflix-icon">
+              <img src="./images/quick-add-icons/pinterest.png" alt="pinterest-icon" class="icon pinterest-icon">
+              <img src="./images/quick-add-icons/twitch.png" alt="twitch-icon" class="icon twitch-icon">
+              <img src="./images/quick-add-icons/youtube.png" alt="youtube-icon" class="icon youtube-icon">
+              <img src="./images/quick-add-icons/whatsapp.png" alt="whatsapp-icon" class="icon whatsapp-icon">
+              <a href="https://www.flaticon.com/packs/social-media-163" title="google icons" class = 'thank-u-mr-babkin'>Icon Pack: Social Media | Flat created by Ruslan Babkin - Flaticon</a>
+            </div>
+    </div>
+    
+  </div>
+    <!-- Main page windows container -->
+    
+      <div class="window-and-todo-container">
+        <div class="window-container">
+          <div class="window-box"><p class="window-name">Google<button class="btn delete-window-btn"><i class="fa-solid fa-xmark fa-2xl" id="delete"></i></button></p><a href="https://www.google.pl/"><div class="window" style="background-image: url(&quot;./images/quick-add-icons/google.png&quot;);"></div></a></div>
+          <div class="window-box"><p class="window-name">Youtube<button class="btn delete-window-btn"><i class="fa-solid fa-xmark fa-2xl" id="delete"></i></button></p><a href="https://www.youtube.com/"><div class="window" style="background-image: url(&quot;./images/quick-add-icons/youtube.png&quot;);"></div></a></div>
+          <div class="window-box"><p class="window-name">Linkedin<button class="btn delete-window-btn"><i class="fa-solid fa-xmark fa-2xl" id="delete"></i></button></p><a href="https://www.linkedin.com/"><div class="window" style="background-image: url(&quot;./images/quick-add-icons/linkedin.png&quot;);"></div></a></div>
+          <div class="window-box"><p class="window-name">Github<button class="btn delete-window-btn"><i class="fa-solid fa-xmark fa-2xl" id="delete"></i></button></p><a href="https://www.github.com/"><div class="window" style="background-image: url(&quot;./images/quick-add-icons/github.png&quot;);"></div></a></div>
+          <div class="window-box"><p class="window-name">Twitter<button class="btn delete-window-btn"><i class="fa-solid fa-xmark fa-2xl" id="delete"></i></button></p><a href="https://www.twitter.com/"><div class="window" style="background-image: url(&quot;./images/quick-add-icons/twitter.png&quot;);"></div></a></div>
+      
+      
+        </div>
+      <div class="todo-container"> 
+        <div class="add-new-todo">
+          <h2>New todo</h2>
+          <input type="text" class="add-new-todo-input" maxlength="25"/>
+          <button class="btn"><i class="fa-regular fa-square-plus fa-2xl add-new-todo-btn"></i></button>
+          </div>
+          <p class="add-new-todo-warning">You must fill in this field !</p>
+          <h2>Todo list</h2>
+          
+            <ul class="todo-ul-list">
+
+            </ul>
+<div class="todo-popup">
+  <h2>Edit your todo</h2>
+  <input type="text" class="todo-popup-input" maxlength="25"/>
+  <p class = 'todo-popup-warning'>You didn't write anything !</p>
+  <button class="btn"><i class="fa-solid fa-check fa-xl todo-popup-accept"></i></button>
+  <button class="btn"><i class="fa-solid fa-xmark fa-xl todo-popup-decline"></i></button>
+</div>
+      </div>
+      
+    </div>
+</div>
+
+
+<!-- <a href="https://www.flaticon.com/free-icons/google" title="google icons">Google icons created by Ruslan Babkin - Flaticon</a> -->
+<script src="script.js"></script>  
+</body>
+  
+</html>
