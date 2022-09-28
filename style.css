@@ -33,6 +33,11 @@ body {
 .window-and-todo-container {
   display: flex;
 }
+@media only screen and (max-width: 600px) {
+  .window-and-todo-container {
+    flex-wrap: wrap-reverse;
+  }
+}
 .window-container {
   color: yellow;
   display: flex;
