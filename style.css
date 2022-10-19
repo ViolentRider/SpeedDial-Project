@@ -13,6 +13,7 @@ body {
   font-family: sans-serif, Georgia, "Times New Roman", Times, serif;
   color: white;
 }
+
 .main-flex-container {
   display: flex;
   flex-direction: column;
@@ -168,9 +169,70 @@ body {
 }
 .top-side {
   display: flex;
-  height: 5em;
-  justify-content: flex-end;
-  padding: 2em 2em 0 0;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  row-gap: 2em;
+  height: auto;
+  padding: 2em;
+  justify-content: space-between;
+  margin: 0 0 1em 0;
+}
+.weather-box {
+  display: flex;
+  flex-direction: column;
+  width: 25em;
+  height: auto;
+  background-color: rgba(15, 11, 11, 0.5);
+  padding: 1em 3em 1em 3em;
+  border-radius: 3em;
+}
+.weather-box h1 {
+  padding: 0;
+  margin: 0;
+  align-self: center;
+}
+.city-name-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  margin: 0 0 0.5em 0;
+}
+.city-name-box img {
+  width: fit-content;
+  height: 4em;
+}
+.weather-left {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+}
+.weather-right {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.weather-right h1 {
+  text-align: center;
+}
+.data-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.data-item {
+  display: flex;
+  flex-direction: row;
+}
+.data-item img {
+  height: 2em;
+  margin: 0 0.5em 0 0;
+  align-self: center;
+}
+.btn-box {
+  display: flex;
+
+  justify-self: end;
 }
 .btn {
   background-color: transparent;

@@ -32,6 +32,7 @@ const mainFlexContainer = document.querySelector(".main-flex-container");
 let todoToEdit;
 const main = () => {
   prepareDOMEvents();
+  geoFindMe();
 };
 
 const openInputWindow = () => {
@@ -277,6 +278,73 @@ const nightModeFnc = () => {
   inputWindow.classList.toggle("night-mode-box-toogle");
   todoContainer.classList.toggle("night-mode-box-toogle");
 };
+
+function geoFindMe() {
+  const weatherImg = document.querySelector(".weather-img");
+  const temperature = document.querySelector(".temperature");
+  const cityName = document.querySelector(".city-name");
+  const pressure = document.querySelector(".pressure");
+  const windSpeed = document.querySelector(".wind-speed");
+  const sunrise = document.querySelector(".sunrise");
+  const sunset = document.querySelector(".sunset");
+  async function sucess(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
+    const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
+    const UNITS = "&units=metric";
+    const URL = API_LINK + latitude + "&lon=" + longitude + API_KEY + UNITS;
+    const response = await axios.get(URL);
+    const data = await response.data;
+    temperature.textContent = Math.floor(data.main.temp) + " ℃";
+    cityName.textContent = data.name;
+    pressure.textContent = data.main.pressure + " hPa";
+    windSpeed.textContent = Math.floor(data.wind.speed) + " km/h";
+    const fixedSunrise = new Date(data.sys.sunrise * 1000);
+    const sunriseTime = fixedSunrise.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    sunrise.textContent = sunriseTime;
+    const fixedSunset = new Date(data.sys.sunset * 1000);
+    const sunsetTime = fixedSunset.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    sunset.textContent = sunsetTime;
+    if ((data.cod >= 200) & (data.cod <= 232)) {
+      weatherImg.setAttribute("src", "./images/weather/storm.png");
+    } else if ((data.cod >= 300) & (data.cod <= 321)) {
+      weatherImg.setAttribute("src", "./images/weather/rainy.png");
+    } else if ((data.cod >= 500) & (data.cod <= 531)) {
+      weatherImg.setAttribute("src", "./images/weather/rainy.png");
+    } else if ((data.cod >= 600) & (data.cod <= 622)) {
+      weatherImg.setAttribute("src", "./images/weather/snowy.png");
+    } else if ((data.cod >= 701) & (data.cod <= 771)) {
+      weatherImg.setAttribute("src", "./images/weather/foog.png");
+    } else if ((data.cod = 781)) {
+      weatherImg.setAttribute("src", "./images/weather/tornado.png");
+    } else if ((data.cod = 800)) {
+      weatherImg.setAttribute("src", "./images/weather/sun.png");
+    } else if ((data.cod >= 801) & (data.cod <= 804)) {
+      weatherImg.setAttribute("src", "./images/weather/cloud.png");
+    }
+    console.log(data);
+  }
+
+  function failure() {
+    console.log("blad");
+  }
+  navigator.geolocation.getCurrentPosition(sucess, failure);
+}
+// async function weatherFnc() {
+//   const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
+//   const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
+//   const URL = API_LINK + latitude + "&lon=" + longitude + API_KEY;
+//   const response = await axios.get(URL);
+//   console.log(response);
+// }
+// openInputWindow
 function prepareDOMEvents() {
   plusBtn.addEventListener("click", openInputWindow);
   xBtn.addEventListener("click", closeInputWindow);
