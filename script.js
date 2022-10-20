@@ -1,459 +1,545 @@
-const plusBtn = document.querySelector(".plus-btn");
-const xBtn = document.querySelector(".close-window-btn");
-const acceptBtn = document.querySelector(".accept-btn");
-const inputWindow = document.querySelector(".set-window");
-const inputWindowContainer = document.querySelector(".set-window-container");
-const inputAdress = document.querySelector(".input-adress");
-const inputName = document.querySelector(".input-name");
-const inputImg = document.querySelector(".input-img");
-const inputAdressWarning = document.querySelector(".input-adress-warning");
-const inputNameWarning = document.querySelector(".input-name-warning");
-const inputImgWarning = document.querySelector(".input-img-warning");
-const windowContainer = document.querySelector(".window-container");
-const windowBox = document.querySelector(".widnow-box");
-const allIcons = document.querySelectorAll(".icon");
-const showDeleteWindowsBtn = document.querySelector(".show-delete-windows-btn");
-const windowName = document.querySelector(".window-name");
-//todo
-const todoContainer = document.querySelector(".todo-container");
-const addNewTodoInput = document.querySelector(".add-new-todo-input");
-const addNewTodoBtn = document.querySelector(".add-new-todo-btn");
-const todoUlList = document.querySelector(".todo-ul-list");
-const todoLiItem = document.querySelector(".todo-li-item");
-const addNewTodoWarning = document.querySelector(".add-new-todo-warning");
-const todoPopup = document.querySelector(".todo-popup");
-const todoPopupInput = document.querySelector(".todo-popup-input");
-const todoPopupAcceptBtn = document.querySelector(".todo-popup-accept");
-const todoPopupWarning = document.querySelector(".todo-popup-warning");
-const openTodoBtn = document.querySelector(".open-todo-btn");
-const nightModeBtn = document.querySelector(".night-mode-btn");
-const mainFlexContainer = document.querySelector(".main-flex-container");
+const menuDishContainer = document.querySelector(".menu-dish-container");
+const breakfastBtn = document.querySelector(".breakfast-btn");
+const menuContainer = document.querySelector(".menu-container");
+const basketContainer = document.querySelector(".basket-container");
+const basketItemsContainer = document.querySelector(".basket-items-container");
+const basketItemTotalPrice = document.querySelector(".basket-item-total-price");
+const homeImg = document.querySelector(".home-img-box");
+//NavBar
+const navBar = document.querySelector(".nav-bar-container");
+const navBarRestName = document.querySelector(".nav-bar-restaurant-name");
+const navBarBox = document.querySelector(".nav-bar-box-ul");
+const basketBtn = document.querySelector(".basket-btn");
+const userBtn = document.querySelector(".navbar-user-btn");
+const userAccount = document.querySelector(".navbar-user-account-btn");
+const navBarBasketItemsCounter = document.querySelector(
+  ".nav-bar-basket-items-counter"
+);
+//account
+const userAccountName = document.querySelector(".user-account-name");
+const userAccountContainer = document.querySelector(".user-account-container");
+const userAccountLogout = document.querySelector(".user-account-logout");
+//delivery
+const deliveryContainer = document.querySelector(".delivery-container");
+const deliveryPaymentValue = document.querySelector(".delivery-basket-value");
+const deliveryPaymentTotal = document.querySelector(".delivery-basket-total");
+const paymentConfirmBtn = document.querySelector(".payment-confirm-btn");
+const deliveryWarning = document.querySelector(".delivery-basket-warning");
+const deliveryValue = document.querySelector(".delivery-value");
+//timer
+const deliveryTimeContainer = document.querySelector(".delivery-timer");
+const spanTimer = document.querySelector(".timer");
+const timerXMark = document.querySelector(".x-mark-delivery-timer");
+//register/login
+const logInContainer = document.querySelector(".log-in-container");
+const registerContainer = document.querySelector(".register-container");
+const hrefToRegister = document.querySelector(".href-to-register");
+const loginEmailInput = document.querySelector(".login-email-input");
+const loginPasswordInput = document.querySelector(".login-password-input");
+const registerEmailInput = document.querySelector(".register-email-input");
+const loginWarning = document.querySelector(".login-warning");
+const registerFirstPasswordInput = document.querySelector(
+  ".register-first-password-input"
+);
+const registerSecondtPasswordInput = document.querySelector(
+  ".register-second-password-input"
+);
+const registerBtn = document.querySelector(".register-btn");
+const signInBtn = document.querySelector(".sign-in-btn");
+const registerWarning = document.querySelector(".register-warning");
+const dishes = [
+  {
+    name: "Bowl of oatmeal",
+    category: "breakfast",
+    description:
+      "Vivamus lobortis odio vitae eleifend ultricies. Integer tincidunt arcu eget erat aliquet, vitae volutpat eros bibendum.Nunc pellentesque placerat sem vel faucibus.",
+    price: "4",
+    img: "./images/food/breakfast/BowlOfOatmeal.jpg",
+  },
+  {
+    name: "Croissants",
+    category: "breakfast",
+    description:
+      "Nulla nec semper lectus. Ut nulla metus, laoreet sed vehicula sit amet, tincidunt id enim. Donec aliquet eget dolor nec efficitur. Curabitur et augue venenatis, volutpat ipsum quis, bibendum dui.",
+    price: "6",
+    img: "./images/food/breakfast/croissant.jpg",
+  },
+  {
+    name: "French toasts",
+    category: "breakfast",
+    description:
+      "Nullam congue nisl id tellus dignissim, non semper mi vulputate. Sed faucibus aliquet lorem vitae feugiat. Aliquam erat volutpat. Fusce ornare leo felis. Nunc ornare, arcu in laoreet luctus, ex.",
+    price: "5",
+    img: "./images/food/breakfast/frenchToast.jpg",
+  },
+  {
+    name: "Omelette",
+    category: "breakfast",
+    description:
+      "Phasellus quis lorem nec turpis blandit porttitor. Proin elementum non eros ac feugiat. Etiam pellentesque in sem sed eleifend. Cras faucibus convallis enim, id tempor tellus accumsan sit amet. Phasellus.",
+    price: "6",
+    img: "./images/food/breakfast/Omelette.jpg",
+  },
+  {
+    name: "Classic toasts",
+    category: "breakfast",
+    description:
+      "Integer quis velit a lectus condimentum maximus id nec ex. Duis consequat, eros in interdum lobortis, tortor mi luctus tellus, non pretium odio turpis et urna. Mauris sollicitudin, massa eu.",
+    price: "5",
+    img: "./images/food/breakfast/toasts.jpg",
+  },
+  {
+    name: "Cheeseburger",
+    category: "dinner",
+    description:
+      "Nunc efficitur orci quam, ac vehicula nisl sodales et. Suspendisse pellentesque elit massa. Duis purus nulla, pulvinar nec justo et, hendrerit euismod lectus. Morbi at scelerisque magna.",
+    price: "12",
+    img: "./images/food/dinner/cheeseburger.jpg",
+  },
+  {
+    name: "Hamburger",
+    category: "dinner",
+    description:
+      "Proin vel augue dolor. Sed non elit eget leo auctor sollicitudin. Nulla odio mauris, condimentum a mauris vulputate, ornare bibendum velit. Phasellus vitae sollicitudin felis.",
+    price: "10",
+    img: "./images/food/dinner/hamburger.jpg",
+  },
+  {
+    name: "Salmon with veggies",
+    category: "dinner",
+    description:
+      "Cras rutrum aliquet velit, ac commodo ante iaculis eu. Vivamus finibus aliquet eros vel auctor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed quis.",
+    price: "13",
+    img: "./images/food/dinner/HealthySalmon-veggies-quinoa.jpg",
+  },
+  {
+    name: "MOMO",
+    category: "dinner",
+    description:
+      "Mauris dapibus arcu ac risus sollicitudin, nec porta arcu egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi egestas eros in massa ornare molestie.",
+    price: "12",
+    img: "./images/food/dinner/NepaliCuisineMOMO.jpg",
+  },
+  {
+    name: "Pork Chop",
+    category: "dinner",
+    description:
+      "Fusce eget lorem blandit, scelerisque elit a, laoreet neque. Etiam pellentesque felis nec faucibus accumsan. Aliquam vitae nunc sed ex feugiat euismod. Nulla eu condimentum leo.",
+    price: "14",
+    img: "./images/food/dinner/porkChop.jpg",
+  },
+  {
+    name: "Red curry",
+    category: "dinner",
+    description:
+      "Suspendisse ac turpis a ligula eleifend scelerisque et eu tellus. Ut ac mauris nec nisi auctor volutpat eu ac purus. Curabitur sodales fringilla purus id tincidunt. Mauris sed consectetur tellus.",
+    price: "10",
+    img: "./images/food/dinner/redCurry.jpg",
+  },
+  {
+    name: "Ribs",
+    category: "dinner",
+    description:
+      "Cras convallis dolor non massa congue molestie. Ut fermentum porttitor arcu, dictum ullamcorper urna eleifend nec. Duis a finibus mauris, pellentesque elementum libero.",
+    price: "16",
+    img: "./images/food/dinner/ribs.jpg",
+  },
+  {
+    name: "Sea food Pasta",
+    category: "dinner",
+    description:
+      "Vestibulum rhoncus purus malesuada, ullamcorper quam sed, tempus est. Donec consectetur eu magna eu mollis. Aliquam vehicula finibus est quis fringilla.",
+    price: "14",
+    img: "./images/food/dinner/SeafoodPastaWithShrimpsAndTomatoesInApan.jpg",
+  },
+  {
+    name: "Steak",
+    category: "dinner",
+    description:
+      "Vivamus condimentum sem id dui sollicitudin consectetur. Cras ac feugiat nibh, at vestibulum eros. Aliquam fermentum vitae massa vitae mollis.",
+    price: "20",
+    img: "./images/food/dinner/steak.jpg",
+  },
+  {
+    name: "Bundt Cake",
+    category: "sweets",
+    description:
+      "Pellentesque eget consequat tellus. Sed imperdiet tellus a sollicitudin molestie. Suspendisse posuere tristique consectetur. Proin iaculis elementum maximus.",
+    price: "15",
+    img: "./images/food/sweets/bundtCake.jpg",
+  },
+  {
+    name: "Cake with wipped cream and berries",
+    category: "sweets",
+    description:
+      "Quisque consequat feugiat imperdiet. Donec non leo magna. In hac habitasse platea dictumst. Fusce tempus eget est a tincidunt. Nam venenatis, diam non euismod bibendum.",
+    price: "15",
+    img: "./images/food/sweets/CakeWithWippedCreamAndBerries.jpg",
+  },
+  {
+    name: "Chocolate ganache tart",
+    category: "sweets",
+    description:
+      "Nunc blandit, tortor sit amet fringilla accumsan, ante leo tristique nibh, nec egestas est magna eu quam. Cras tempor ut orci in volutpat. Sed sodales.Nam at quam in dolor hendrerit rutrum non.",
+    price: "14",
+    img: "./images/food/sweets/ChocolateGanacheTart.jpg",
+  },
+  {
+    name: "Fruit pie",
+    category: "sweets",
+    description:
+      "Donec posuere eleifend feugiat. In hac habitasse platea dictumst. Nulla non ipsum pretium, imperdiet leo ut, condimentum massa. Proin erat elit, consectetur pharetra laoreet id.",
+    price: "13",
+    img: "./images/food/sweets/fruitPie.jpg",
+  },
+  {
+    name: "Muffins",
+    category: "sweets",
+    description:
+      "Vivamus tincidunt enim id risus cursus, at tempus quam tempus. Maecenas ut varius ipsum, a sodales lacus. Nam at quam in dolor hendrerit rutrum non.",
+    price: "5",
+    img: "./images/food/sweets/muffins.jpg",
+  },
+];
 
-let todoToEdit;
-const main = () => {
+let dishesMap = dishes.map(function (item) {
+  return `<div class="menu-dish-box ${item.category}">
+  <img
+    src=${item.img}
+    class="dish-img" alt = '${item.name}'
+  />
+  <article>
+    <h3>${item.name}</h3>
+    <p>
+      ${item.description}
+    </p>
+
+    <div class="dish-tools">
+      Total price:
+      <div class="dish-price">${item.price}</div>$
+      <button><i class="fa-solid fa-cart-plus fa-xl menu-buy-food-btn" ></i></button>
+    </div>
+  </article>
+</div>`;
+});
+dishesMap = dishesMap.join("");
+menuDishContainer.innerHTML = dishesMap;
+function main() {
   prepareDOMEvents();
-  geoFindMe();
-};
-
-const openInputWindow = () => {
-  inputWindow.style.display = "flex";
-  inputWindowContainer.style.display = "flex";
-  windowContainer.style.opacity = "0.2";
-};
-const closeInputWindow = () => {
-  inputWindow.style.display = "none";
-  inputWindowContainer.style.display = "none";
-  windowContainer.style.opacity = "1.0";
-  inputAdressWarning.style.display = "none";
-  inputNameWarning.style.display = "none";
-  inputImgWarning.style.display = "none";
-};
-
-function validURL(str) {
-  var pattern = new RegExp(
-    "^(https?:\\/\\/)?" + // protocol
-      "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name
-      "((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
-      "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" + // port and path
-      "(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
-      "(\\#[-a-z\\d_]*)?$",
-    "i"
-  ); // fragment locator
-  return !!pattern.test(str);
 }
 
-const checkInputAdress = () => {
-  if (inputAdress.value == "") {
-    inputAdressWarning.style.display = "flex";
-  } else {
-    inputAdressWarning.style.display = "none";
-  }
+const createBasketItem = (itemName, itemPrice) => {
+  const newBasketItem = document.createElement("div");
+  newBasketItem.classList.add("basket-item");
+  basketItemsContainer.append(newBasketItem);
+
+  const newBasketItemName = document.createElement("div");
+  newBasketItemName.classList.add("basket-item-name");
+  newBasketItem.append(newBasketItemName);
+  newBasketItemName.textContent = itemName;
+
+  const newBasketBtn = document.createElement("button");
+  newBasketBtn.classList.add("basket-btn");
+  newBasketBtn.innerHTML = '<i class="fa-solid fa-xmark delete-item"></i>';
+  newBasketItemName.append(newBasketBtn);
+
+  const newBasketItemPrice = document.createElement("div");
+  newBasketItemPrice.classList.add("basket-item-price");
+  newBasketItem.append(newBasketItemPrice);
+  newBasketItemPrice.textContent = itemPrice;
+
+  const newBasketDollar = document.createElement("div");
+  newBasketDollar.classList.add("basket-item-dollar");
+  newBasketItem.append(newBasketDollar);
+  newBasketDollar.innerHTML = "$";
 };
 
-const checkInputName = () => {
-  if (inputName.value == "") {
-    inputNameWarning.style.display = "flex";
-  } else {
-    inputNameWarning.style.display = "none";
-  }
-};
+const checkMenuBtns = (e) => {
+  let breakfastDishes = document.querySelectorAll(".breakfast");
+  let dinnerDishes = document.querySelectorAll(".dinner");
+  let sweetDishes = document.querySelectorAll(".sweets");
 
-const checkInputImg = () => {
-  if (inputImg.value == "") {
-    inputImgWarning.style.display = "flex";
-  } else {
-    inputImgWarning.style.display = "none";
-  }
-};
-
-const addNewWindow = () => {
-  if (
-    inputAdress.value &&
-    inputName.value &&
-    inputImg.value !== "" &&
-    validURL(inputAdress.value) !== false
-  ) {
-    const newWindowBox = document.createElement("div");
-    newWindowBox.classList.add("window-box");
-    windowContainer.append(newWindowBox);
-
-    const newWindowName = document.createElement("p");
-    newWindowName.classList.add("window-name");
-    newWindowName.textContent = inputName.value;
-    newWindowBox.append(newWindowName);
-
-    const newWindowDeleteButton = document.createElement("button");
-    newWindowDeleteButton.classList.add("btn", "delete-window-btn");
-    newWindowName.append(newWindowDeleteButton);
-
-    const newWindowDeleteButtonStyle = document.createElement("i");
-    newWindowDeleteButtonStyle.classList.add("fa-solid", "fa-xmark", "fa-2xl");
-    newWindowDeleteButtonStyle.setAttribute("id", "delete");
-    newWindowDeleteButton.append(newWindowDeleteButtonStyle);
-
-    const newWindowAdress = document.createElement("a");
-    newWindowAdress.setAttribute("href", `${inputAdress.value}`);
-    newWindowBox.append(newWindowAdress);
-    console.log(newWindowAdress);
-
-    const newWindow = document.createElement("div");
-    newWindow.classList.add("window");
-    newWindow.style.backgroundImage = `url('${inputImg.value}')`;
-    newWindowAdress.append(newWindow);
-    inputAdress.value = "";
-    inputName.value = "";
-    inputImg.value = "";
-    closeInputWindow();
-  } else if (validURL(inputAdress.value) == false) {
-    inputAdressWarning.style.display = "flex";
-    inputAdressWarning.textContent = "Give the correct webpage adress !";
-    inputAdressWarning.style.color = "tomato";
-  }
-  inputAdress.value = "";
-  inputName.value = "";
-  inputImg.value = "";
-};
-
-const icons = (e) => {
-  if (e.target.matches(".google-icon")) {
-    inputAdress.value = "https://www.google.pl/";
-    inputName.value = "Google";
-    inputImg.value = "./images/quick-add-icons/google.png";
-  } else if (e.target.matches(".facebook-icon")) {
-    inputAdress.value = "https://www.facebook.com/";
-    inputName.value = "Facebook";
-    inputImg.value = "./images/quick-add-icons/facebook.png";
-  } else if (e.target.matches(".instagram-icon")) {
-    inputAdress.value = "https://www.instagram.com/";
-    inputName.value = "Instagram";
-    inputImg.value = "./images/quick-add-icons/instagram.png";
-  } else if (e.target.matches(".twitter-icon")) {
-    inputAdress.value = "https://www.twitter.com/";
-    inputName.value = "Twitter";
-    inputImg.value = "./images/quick-add-icons/twitter.png";
-  } else if (e.target.matches(".tiktok-icon")) {
-    inputAdress.value = "https://www.tiktok.com/";
-    inputName.value = "Tiktok";
-    inputImg.value = "./images/quick-add-icons/tiktok.png";
-  } else if (e.target.matches(".github-icon")) {
-    inputAdress.value = "https://www.github.com/";
-    inputName.value = "Github";
-    inputImg.value = "./images/quick-add-icons/github.png";
-  } else if (e.target.matches(".linkedin-icon")) {
-    inputAdress.value = "https://www.linkedin.com/";
-    inputName.value = "Linkedin";
-    inputImg.value = "./images/quick-add-icons/linkedin.png";
-  } else if (e.target.matches(".netflix-icon")) {
-    inputAdress.value = "https://www.netflix.com/";
-    inputName.value = "Netflix";
-    inputImg.value = "./images/quick-add-icons/netflix.png";
-  } else if (e.target.matches(".pinterest-icon")) {
-    inputAdress.value = "https://www.pinterest.com/";
-    inputName.value = "Pinterest";
-    inputImg.value = "./images/quick-add-icons/pinterest.png";
-  } else if (e.target.matches(".twitch-icon")) {
-    inputAdress.value = "https://www.twitch.tv/";
-    inputName.value = "Twitch";
-    inputImg.value = "./images/quick-add-icons/twitch.png";
-  } else if (e.target.matches(".youtube-icon")) {
-    inputAdress.value = "https://www.youtube.com/";
-    inputName.value = "Youtube";
-    inputImg.value = "./images/quick-add-icons/youtube.png";
-  } else if (e.target.matches(".whatsapp-icon")) {
-    inputAdress.value = "https://www.whatsapp.com/";
-    inputName.value = "Whatsapp";
-    inputImg.value = "./images/quick-add-icons/whatsapp.png";
-  }
-};
-const checkClick = (e) => {
-  if (e.target.matches("#delete")) {
-    deleteWindowBtnFnc(e);
-  } else if (e.target.matches(".show-delete-windows-btn")) {
-    showDeleteWindowsBtnFnc();
-  }
-};
-
-const deleteWindowBtnFnc = (e) => {
-  e.target.closest("div").remove();
-};
-
-const showDeleteWindowsBtnFnc = () => {
-  let deleteWindowBtn = document.querySelectorAll(".delete-window-btn");
-  deleteWindowBtn.forEach((element) => {
-    element.classList.toggle("delete-window-btn-display");
-  });
-};
-
-//todo
-
-const addNewTodoBtnFnc = () => {
-  if (addNewTodoInput.value !== "") {
-    addNewTodoWarning.style.display = "none";
-    const newLiItem = document.createElement("li");
-    newLiItem.classList.add("todo-li-item");
-    newLiItem.textContent = addNewTodoInput.value;
-    todoUlList.append(newLiItem);
-
-    const toolsPanel = document.createElement("div");
-    toolsPanel.classList.add("tools-panel");
-    newLiItem.append(toolsPanel);
-
-    const btnDoneTodo = document.createElement("button");
-    btnDoneTodo.classList.add("btn");
-    btnDoneTodo.innerHTML = `<i class="fa-regular fa-square-check fa-lg done-todo-btn"></i>`;
-
-    const btnEditTodo = document.createElement("button");
-    btnEditTodo.classList.add("btn");
-    btnEditTodo.innerHTML = `<i class="fa-solid fa-pen-to-square fa-lg edit-todo-btn"></i>`;
-
-    const btnDeleteTodo = document.createElement("button");
-    btnDeleteTodo.classList.add("btn");
-    btnDeleteTodo.innerHTML = `<i class="fa-solid fa-square-xmark fa-lg delete-todo-btn"></i>`;
-    toolsPanel.append(btnDoneTodo, btnEditTodo, btnDeleteTodo);
-  } else {
-    addNewTodoWarning.style.display = "block";
-  }
-  addNewTodoInput.value = "";
-};
-
-const checkClickTodo = (e) => {
-  if (e.target.matches(".delete-todo-btn")) {
-    e.target.closest("li").remove();
-  } else if (e.target.matches(".done-todo-btn")) {
-    e.target.closest("li").classList.toggle("todo-li-item-toogle");
-  } else if (e.target.matches(".edit-todo-btn")) {
-    todoPopupEdit(e);
-  } else if (e.target.matches(".todo-popup-decline")) {
-    todoPopup.style.display = "none";
-  }
-};
-
-const todoPopupEdit = (e) => {
-  todoPopup.style.display = "block";
-  todoToEdit = e.target.closest("li");
-  console.log(todoToEdit);
-  todoPopupInput.value = todoToEdit.firstChild.textContent;
-
-  // todoToEdit = e.target.closest("li");
-  // todoToEdit.textContent = "segsebgosneg";
-};
-
-const todoPopupInputAccept = () => {
-  if (todoPopupInput.value !== "") {
-    todoPopupWarning.style.display = "none";
-    todoToEdit.firstChild.textContent = todoPopupInput.value;
-    todoPopup.style.display = "none";
-  } else {
-    todoPopupWarning.style.display = "block";
-  }
-};
-const openTodoFnc = () => {
-  todoContainer.classList.toggle("todo-container-toggle");
-  windowContainer.classList.toggle("window-container-toggle");
-};
-
-const nightModeFnc = () => {
-  mainFlexContainer.classList.toggle("night-mode-background-toogle");
-  document.body.classList.toggle("night-mode-background-toogle");
-  inputWindow.classList.toggle("night-mode-box-toogle");
-  todoContainer.classList.toggle("night-mode-box-toogle");
-};
-
-function geoFindMe() {
-  const weatherImg = document.querySelector(".weather-img");
-  const temperature = document.querySelector(".temperature");
-  const cityName = document.querySelector(".city-name");
-  const pressure = document.querySelector(".pressure");
-  const windSpeed = document.querySelector(".wind-speed");
-  const sunrise = document.querySelector(".sunrise");
-  const sunset = document.querySelector(".sunset");
-  async function sucess(position) {
-    let latitude = position.coords.latitude.toFixed(2);
-
-    let longitude = position.coords.longitude.toFixed(2);
-    const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
-    const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
-    const UNITS = "&units=metric";
-    const URL = API_LINK + latitude + "&lon=" + longitude + API_KEY + UNITS;
-    const response = await axios.get(URL);
-    const data = await response.data;
-    temperature.textContent = Math.floor(data.main.temp) + " ℃";
-    cityName.innerHTML = data.name;
-    pressure.textContent = data.main.pressure + " hPa";
-    windSpeed.textContent = Math.floor(data.wind.speed) + " km/h";
-    const fixedSunrise = new Date(data.sys.sunrise * 1000);
-    const sunriseTime = fixedSunrise.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
+  if (e.target.matches(".all-btn")) {
+    breakfastDishes.forEach((item) => {
+      item.style.display = "flex";
     });
-    sunrise.textContent = sunriseTime;
-    const fixedSunset = new Date(data.sys.sunset * 1000);
-    const sunsetTime = fixedSunset.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
+    dinnerDishes.forEach((item) => {
+      item.style.display = "flex";
     });
-    const currentDate = new Date();
-    const currentTime = currentDate.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
+    sweetDishes.forEach((item) => {
+      item.style.display = "flex";
     });
+  } else if (e.target.matches(".breakfast-btn")) {
+    breakfastDishes.forEach((item) => {
+      item.style.display = "flex";
+    });
+    dinnerDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+    sweetDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+  } else if (e.target.matches(".dinner-btn")) {
+    breakfastDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+    dinnerDishes.forEach((item) => {
+      item.style.display = "flex";
+    });
+    sweetDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+  } else if (e.target.matches(".sweets-btn")) {
+    breakfastDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+    dinnerDishes.forEach((item) => {
+      item.style.display = "none";
+    });
+    sweetDishes.forEach((item) => {
+      item.style.display = "flex";
+    });
+  }
+};
+let totalPrice = 0;
 
-    sunset.textContent = sunsetTime;
-    const dataWeatherImg = data.weather[0].id;
-    if (
-      (dataWeatherImg >= 200) &
-        (dataWeatherImg <= 202) &
-        (currentTime >= sunriseTime) &
-        (currentTime <= sunsetTime) ||
-      (dataWeatherImg >= 230) &
-        (dataWeatherImg <= 232) &
-        (currentTime >= sunriseTime) &
-        (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/storm_rain_day.png");
-    } else if (
-      (dataWeatherImg >= 200) &
-        (dataWeatherImg <= 202) &
-        (currentTime <= sunriseTime) &
-        (currentTime >= sunsetTime) ||
-      (dataWeatherImg >= 230) &
-        (dataWeatherImg <= 232) &
-        (currentTime <= sunriseTime) &
-        (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/storm_rain_night.png");
-    } else if (
-      (dataWeatherImg >= 210) &
-      (dataWeatherImg <= 221) &
-      (currentTime >= sunriseTime) &
-      (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/storm_day.png");
-    } else if (
-      (dataWeatherImg >= 200) &
-      (dataWeatherImg <= 202) &
-      (currentTime <= sunriseTime) &
-      (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/storm_night.png");
-    } else if (
-      (dataWeatherImg >= 300) &
-      (dataWeatherImg <= 531) &
-      (currentTime >= sunriseTime) &
-      (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/rainy_day.png");
-    } else if (
-      (dataWeatherImg >= 300) &
-      (dataWeatherImg <= 531) &
-      (currentTime <= sunriseTime) &
-      (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/rainy_night.png");
-    } else if (
-      (dataWeatherImg >= 600) &
-      (dataWeatherImg <= 622) &
-      (currentTime >= sunriseTime) &
-      (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/snowy_day.png");
-    } else if (
-      (dataWeatherImg >= 600) &
-      (dataWeatherImg <= 622) &
-      (currentTime <= sunriseTime) &
-      (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/snowy_night.png");
-    } else if ((dataWeatherImg >= 701) & (dataWeatherImg <= 771)) {
-      weatherImg.setAttribute("src", "./images/weather/foog.png");
-    } else if (dataWeatherImg >= 600 == 781) {
-      weatherImg.setAttribute("src", "./images/weather/tornado.png");
-    } else if (
-      (dataWeatherImg == 800) &
-      (currentTime >= sunriseTime) &
-      (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/sun.png");
-    } else if (
-      (dataWeatherImg == 800) &
-      (currentTime <= sunriseTime) &
-      (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/moon.png");
-    } else if (
-      (dataWeatherImg >= 801) &
-      (dataWeatherImg <= 804) &
-      (currentTime >= sunriseTime) &
-      (currentTime <= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/cloudy_day.png");
-    } else if (
-      (dataWeatherImg >= 801) &
-      (dataWeatherImg <= 804) &
-      (currentTime <= sunriseTime) &
-      (currentTime >= sunsetTime)
-    ) {
-      weatherImg.setAttribute("src", "./images/weather/cloudy_night.png");
+const checkBasketTotalPrice = (e) => {
+  if (e.target.matches(".menu-buy-food-btn")) {
+    let itemClosestPrice = e.target.closest("button");
+    let itemPrice = itemClosestPrice.previousElementSibling.textContent;
+    let itemClosestName = e.target.closest("div");
+    let itemName =
+      itemClosestName.previousElementSibling.previousElementSibling.textContent;
+    createBasketItem(itemName, itemPrice);
+    let itemPriceToNum = Number(itemPrice);
+    totalPrice += itemPriceToNum;
+  } else if (e.target.matches(".delete-item")) {
+    let basketItemPriceMinus = e.target.closest("div").nextSibling.textContent;
+    let basketItemPriceMinusNum = Number(basketItemPriceMinus);
+    totalPrice -= basketItemPriceMinusNum;
+    e.target.closest(".basket-item").remove();
+  } else if (e.target.matches(".basket-checkout-btn")) {
+    if (userAccount.style.display == "inline-flex" && totalPrice !== 0) {
+      deliveryContainer.style.display = "flex";
+      deliveryPaymentValue.textContent = `Basket: ${totalPrice}.00 $`;
+      deliveryPaymentTotal.textContent = `Total: ${totalPrice}.00 $`;
+      deliveryValue.style.textDecoration = "line-through";
+    } else if (totalPrice !== 0) {
+      deliveryContainer.style.display = "flex";
+      deliveryPaymentValue.textContent = `Basket: ${totalPrice}.00 $`;
+      deliveryPaymentTotal.textContent = `Total: ${totalPrice + 4}.00 $`;
+      deliveryValue.style.textDecoration = "none";
     }
   }
 
-  function failure() {
-    console.log("blad");
+  let allBasketItems = document.querySelectorAll(".basket-item");
+  if (allBasketItems.length !== 0) {
+    navBarBasketItemsCounter.classList.add(
+      "nav-bar-basket-items-counter-display"
+    );
+    navBarBasketItemsCounter.innerHTML = allBasketItems.length;
+  } else if (allBasketItems.length == 0) {
+    navBarBasketItemsCounter.classList.remove(
+      "nav-bar-basket-items-counter-display"
+    );
   }
-  navigator.geolocation.getCurrentPosition(sucess, failure);
-}
-
-const dataBoxPopupBtn = document.querySelector(".data-box-popup");
-const dataBoxPopupFnc = () => {
-  const dataBox = document.querySelector(".data-box");
-  dataBox.classList.toggle("data-box-toggle");
+  basketItemTotalPrice.textContent = totalPrice;
 };
-// async function weatherFnc() {
-//   const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
-//   const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
-//   const URL = API_LINK + latitude + "&lon=" + longitude + API_KEY;
-//   const response = await axios.get(URL);
-//   console.log(response);
-// }
-// openInputWindow
+//NavBar scroll
+const navBarRestaurantName = document.querySelector(".nav-bar-restaurant-name");
+const navBarFnc = () => {
+  const scrollHeight = window.pageYOffset;
+  const navHeight = navBar.getBoundingClientRect().height;
+  // const navHeight = 105.4375;
+  console.log(navHeight);
+
+  if (scrollHeight > navHeight) {
+    navBar.classList.add("nav-bar-container-fixed");
+    navBarBox.classList.add("nav-bar-box-ul-fixed");
+    navBarRestaurantName.classList.add("nav-bar-restaurant-name-fixed");
+  } else {
+    navBar.classList.remove("nav-bar-container-fixed");
+    navBarBox.classList.remove("nav-bar-box-ul-fixed");
+    navBarRestaurantName.classList.remove("nav-bar-restaurant-name-fixed");
+  }
+};
+const basketToggle = () => {
+  basketContainer.classList.toggle("basket-container-toogle");
+  logInContainer.classList.remove("log-in-container-toggle");
+  registerContainer.classList.remove("register-container-toggle");
+};
+console.log(basketBtn);
+
+const deliveryBtns = (e) => {
+  if (e.target.matches(".payment-decline-btn")) {
+    deliveryContainer.style.display = "none";
+    deliveryName.value = "";
+    deliverySecondName.value = "";
+    deliveryEmail.value = "";
+    deliveryPhone.value = "";
+    deliveryPostal.value = "";
+    deliveryCity.value = "";
+    deliveryStreet.value = "";
+    deliveryHouse.value = "";
+    deliveryWarning.style.display = "none";
+  }
+};
+const deliveryName = document.querySelector(".delivery-name");
+const deliverySecondName = document.querySelector(".delivery-second-name");
+const deliveryEmail = document.querySelector(".delivery-email");
+const deliveryPhone = document.querySelector(".delivery-phone");
+const deliveryPostal = document.querySelector(".delivery-postal");
+const deliveryCity = document.querySelector(".delivery-city");
+const deliveryStreet = document.querySelector(".delivery-street");
+const deliveryHouse = document.querySelector(".delivery-house");
+const checkDeliveryInfo = () => {
+  if (
+    deliveryName.value &&
+    deliverySecondName.value &&
+    deliveryEmail.value &&
+    deliveryPhone.value &&
+    deliveryPostal.value &&
+    deliveryCity.value &&
+    deliveryStreet.value &&
+    deliveryHouse.value !== ""
+  ) {
+    console.log("nice");
+    deliveryContainer.style.display = "none";
+    basketContainer.classList.remove("basket-container-toogle");
+    deliveryTimeContainer.style.display = "flex";
+    deliveryName.value = "";
+    deliverySecondName.value = "";
+    deliveryEmail.value = "";
+    deliveryPhone.value = "";
+    deliveryPostal.value = "";
+    deliveryCity.value = "";
+    deliveryStreet.value = "";
+    deliveryHouse.value = "";
+    deliveryWarning.style.display = "none";
+    window.scrollTo(0, 0);
+  } else {
+    deliveryWarning.style.display = "flex";
+  }
+};
+
+//Delivery timer
+const startminutes = 40;
+let time = startminutes * 60;
+
+const timer = () => {
+  const minutes = Math.floor(time / 60);
+  let seconds = time % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+  spanTimer.innerHTML = `${minutes} : ${seconds}`;
+  time--;
+};
+setInterval(timer, 1000);
+
+const closeDelivery = () => {
+  deliveryTimeContainer.style.display = "none";
+};
+//End of Delivery Timer
+
+const users = new Map();
+
+const checkRegisterFields = () => {
+  if (
+    registerFirstPasswordInput.value === registerSecondtPasswordInput.value &&
+    registerEmailInput.value !== "" &&
+    registerFirstPasswordInput.value !== "" &&
+    registerSecondtPasswordInput !== "" &&
+    users.has(`${registerEmailInput.value}`) === false
+  ) {
+    users.set(
+      `${registerEmailInput.value}`,
+      `${registerFirstPasswordInput.value}`
+    );
+    console.log(users);
+
+    registerContainer.classList.toggle("register-container-toggle");
+    registerEmailInput.value = "";
+    registerFirstPasswordInput.value = "";
+    registerSecondtPasswordInput.value = "";
+  } else if (
+    registerFirstPasswordInput.value !== registerSecondtPasswordInput.value
+  ) {
+    registerWarning.style.color = "red";
+    registerWarning.innerHTML = "Your passwords are different";
+    console.log("popraw dane");
+  } else if (users.has(`${registerEmailInput.value}`) === true) {
+    registerWarning.innerHTML = `There is an account with this e-mail`;
+  }
+};
+
+const signInFnc = () => {
+  if (
+    users.has(`${loginEmailInput.value}`) === true &&
+    users.get(`${loginEmailInput.value}`) === loginPasswordInput.value
+  ) {
+    //////////
+    userAccount.style.position = "relative";
+    userAccount.style.display = "inline-flex";
+    ////////
+    userAccount.firstChild.innerHTML = loginEmailInput.value;
+    userBtn.style.display = "none";
+    logInContainer.classList.toggle("log-in-container-toggle");
+    userAccountName.innerHTML = loginEmailInput.value;
+    loginEmailInput.value = "";
+    loginPasswordInput.value = "";
+    console.log("super");
+  } else {
+    loginWarning.style.color = "red";
+    loginWarning.innerHTML = "Wrong username or password.";
+  }
+  // user.email == loginEmailInput.value &&
+  // user.password == loginPasswordInput.value
+};
+
+const showLoginPopup = () => {
+  if (registerContainer.classList.contains("register-container-toggle")) {
+    registerContainer.classList.toggle("register-container-toggle");
+    registerEmailInput.value = "";
+    registerFirstPasswordInput.value = "";
+    registerSecondtPasswordInput.value = "";
+    registerWarning.innerHTML = "";
+  } else {
+    loginEmailInput.value = "";
+    loginPasswordInput.value = "";
+    loginWarning.innerHTML = "";
+  }
+  logInContainer.classList.toggle("log-in-container-toggle");
+  basketContainer.classList.remove("basket-container-toogle");
+};
+const showRegisterPopup = () => {
+  registerContainer.classList.toggle("register-container-toggle");
+
+  loginEmailInput.value = "";
+  loginPasswordInput.value = "";
+};
+
+const displayUserAccountInfo = () => {
+  userAccountContainer.classList.toggle("user-account-container-toggle");
+};
+const logoutUserAccount = () => {
+  userAccount.style.display = "none";
+  userAccount.style.position = "absolute";
+  userBtn.style.display = "inline-flex";
+  userAccountContainer.classList.toggle("user-account-container-toggle");
+};
+console.log(paymentConfirmBtn);
 function prepareDOMEvents() {
-  plusBtn.addEventListener("click", openInputWindow);
-  xBtn.addEventListener("click", closeInputWindow);
-  openTodoBtn.addEventListener("click", openTodoFnc);
-  acceptBtn.addEventListener("click", addNewWindow);
-  inputAdress.addEventListener("keyup", checkInputAdress);
-  inputName.addEventListener("keyup", checkInputName);
-  inputImg.addEventListener("keyup", checkInputImg);
-  allIcons.forEach((iconListener) => {
-    iconListener.addEventListener("click", icons);
-  });
-  windowContainer.addEventListener("click", checkClick);
-  document.addEventListener("click", checkClick);
-  //Todo
-  addNewTodoBtn.addEventListener("click", addNewTodoBtnFnc);
-  todoContainer.addEventListener("click", checkClickTodo);
-  todoPopupAcceptBtn.addEventListener("click", todoPopupInputAccept);
-  nightModeBtn.addEventListener("click", nightModeFnc);
-  dataBoxPopupBtn.addEventListener("click", dataBoxPopupFnc);
+  menuContainer.addEventListener("click", checkMenuBtns);
+  document.addEventListener("click", checkBasketTotalPrice);
+  window.addEventListener("scroll", navBarFnc);
+  basketBtn.addEventListener("click", basketToggle);
+  deliveryContainer.addEventListener("click", deliveryBtns);
+  paymentConfirmBtn.addEventListener("click", checkDeliveryInfo);
+  timerXMark.addEventListener("click", closeDelivery);
+  userBtn.addEventListener("click", showLoginPopup);
+  hrefToRegister.addEventListener("click", showRegisterPopup);
+  registerBtn.addEventListener("click", checkRegisterFields);
+  signInBtn.addEventListener("click", signInFnc);
+  userAccount.addEventListener("click", displayUserAccountInfo);
+  userAccountLogout.addEventListener("click", logoutUserAccount);
 }
 document.addEventListener("DOMContentLoaded", main);
