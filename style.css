@@ -1,6 +1,6 @@
 body {
-  padding: 0%;
-  margin: 0%;
+  padding: 0;
+  margin: 0;
   width: auto;
   height: auto;
   background: rgb(20, 119, 140);
@@ -17,9 +17,9 @@ body {
 .main-flex-container {
   display: flex;
   flex-direction: column;
-  padding: 0%;
-  margin: 0%;
-  width: auto;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   height: auto;
   background: rgb(20, 119, 140);
   background: linear-gradient(
@@ -34,11 +34,7 @@ body {
 .window-and-todo-container {
   display: flex;
 }
-@media only screen and (max-width: 600px) {
-  .window-and-todo-container {
-    flex-wrap: wrap-reverse;
-  }
-}
+
 .window-container {
   color: yellow;
   display: flex;
@@ -170,20 +166,20 @@ body {
 .top-side {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap-reverse;
   row-gap: 2em;
+  width: auto;
   height: auto;
   padding: 2em;
   justify-content: space-between;
-  margin: 0 0 1em 0;
+  margin: 0 0 0em 0;
 }
 .weather-box {
   display: flex;
   flex-direction: column;
-  width: 25em;
+  width: fit-content;
   height: auto;
   background-color: rgba(15, 11, 11, 0.5);
-  padding: 1em 3em 1em 3em;
+  padding: 0;
   border-radius: 3em;
 }
 .weather-box h1 {
@@ -195,9 +191,9 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid white;
-  margin: 0 0 0.5em 0;
+  padding: 1em;
 }
+
 .city-name-box img {
   width: fit-content;
   height: 4em;
@@ -206,11 +202,13 @@ body {
   display: flex;
   flex-direction: row;
   column-gap: 1em;
+  padding: 0 1em 0 2em;
 }
 .weather-right {
   display: flex;
   flex-direction: column;
   align-self: center;
+  padding: 0 2em 0 1em;
 }
 .weather-right h1 {
   text-align: center;
@@ -218,11 +216,19 @@ body {
 .data-box {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
+  padding: 1em;
 }
+
+.data-box-popup {
+  display: none;
+}
+
 .data-item {
   display: flex;
   flex-direction: row;
+  padding: 0 1em 0 1em;
 }
 .data-item img {
   height: 2em;
@@ -333,4 +339,43 @@ body {
     rgba(133, 145, 53, 1) 60%,
     rgba(119, 133, 57, 1) 92%
   );
+}
+@media only screen and (max-width: 600px) {
+  .window-and-todo-container {
+    flex-wrap: wrap-reverse;
+  }
+  .add-new-todo-input {
+    margin: 0 0 1em 0;
+  }
+  .top-side {
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+  }
+  .weather-left {
+    flex-direction: column;
+    padding: 0;
+    align-items: center;
+  }
+  .weather-right {
+    padding: 0;
+    text-align: center;
+  }
+  .city-name-box {
+    flex-direction: column;
+  }
+  .data-box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+  }
+  .data-box-popup {
+    display: block;
+  }
+  .weather-box {
+    align-self: center;
+    width: 90%;
+  }
+  .data-box-toggle {
+    display: flex;
+  }
 }

@@ -297,7 +297,7 @@ function geoFindMe() {
     const response = await axios.get(URL);
     const data = await response.data;
     temperature.textContent = Math.floor(data.main.temp) + " ℃";
-    cityName.textContent = data.name;
+    cityName.innerHTML = data.name;
     pressure.textContent = data.main.pressure + " hPa";
     windSpeed.textContent = Math.floor(data.wind.speed) + " km/h";
     const fixedSunrise = new Date(data.sys.sunrise * 1000);
@@ -337,6 +337,12 @@ function geoFindMe() {
   }
   navigator.geolocation.getCurrentPosition(sucess, failure);
 }
+
+const dataBoxPopupBtn = document.querySelector(".data-box-popup");
+const dataBoxPopupFnc = () => {
+  const dataBox = document.querySelector(".data-box");
+  dataBox.classList.toggle("data-box-toggle");
+};
 // async function weatherFnc() {
 //   const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
 //   const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
@@ -363,5 +369,6 @@ function prepareDOMEvents() {
   todoContainer.addEventListener("click", checkClickTodo);
   todoPopupAcceptBtn.addEventListener("click", todoPopupInputAccept);
   nightModeBtn.addEventListener("click", nightModeFnc);
+  dataBoxPopupBtn.addEventListener("click", dataBoxPopupFnc);
 }
 document.addEventListener("DOMContentLoaded", main);
