@@ -288,8 +288,9 @@ function geoFindMe() {
   const sunrise = document.querySelector(".sunrise");
   const sunset = document.querySelector(".sunset");
   async function sucess(position) {
-    let latitude = position.coords.latitude;
-    let longitude = position.coords.longitude;
+    let latitude = position.coords.latitude.toFixed(2);
+
+    let longitude = position.coords.longitude.toFixed(2);
     const API_LINK = "https://api.openweathermap.org/data/2.5/weather?lat=";
     const API_KEY = "&appid=7f173bb5dd783a0ad8376520035dc58b";
     const UNITS = "&units=metric";
@@ -311,25 +312,109 @@ function geoFindMe() {
       hour: "2-digit",
       minute: "2-digit",
     });
+    const currentDate = new Date();
+    const currentTime = currentDate.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     sunset.textContent = sunsetTime;
-    if ((data.cod >= 200) & (data.cod <= 232)) {
-      weatherImg.setAttribute("src", "./images/weather/storm.png");
-    } else if ((data.cod >= 300) & (data.cod <= 321)) {
-      weatherImg.setAttribute("src", "./images/weather/rainy.png");
-    } else if ((data.cod >= 500) & (data.cod <= 531)) {
-      weatherImg.setAttribute("src", "./images/weather/rainy.png");
-    } else if ((data.cod >= 600) & (data.cod <= 622)) {
-      weatherImg.setAttribute("src", "./images/weather/snowy.png");
-    } else if ((data.cod >= 701) & (data.cod <= 771)) {
+    const dataWeatherImg = data.weather[0].id;
+    if (
+      (dataWeatherImg >= 200) &
+        (dataWeatherImg <= 202) &
+        (currentTime >= sunriseTime) &
+        (currentTime <= sunsetTime) ||
+      (dataWeatherImg >= 230) &
+        (dataWeatherImg <= 232) &
+        (currentTime >= sunriseTime) &
+        (currentTime <= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/storm_rain_day.png");
+    } else if (
+      (dataWeatherImg >= 200) &
+        (dataWeatherImg <= 202) &
+        (currentTime <= sunriseTime) &
+        (currentTime >= sunsetTime) ||
+      (dataWeatherImg >= 230) &
+        (dataWeatherImg <= 232) &
+        (currentTime <= sunriseTime) &
+        (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/storm_rain_night.png");
+    } else if (
+      (dataWeatherImg >= 210) &
+      (dataWeatherImg <= 221) &
+      (currentTime >= sunriseTime) &
+      (currentTime <= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/storm_day.png");
+    } else if (
+      (dataWeatherImg >= 200) &
+      (dataWeatherImg <= 202) &
+      (currentTime <= sunriseTime) &
+      (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/storm_night.png");
+    } else if (
+      (dataWeatherImg >= 300) &
+      (dataWeatherImg <= 531) &
+      (currentTime >= sunriseTime) &
+      (currentTime <= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/rainy_day.png");
+    } else if (
+      (dataWeatherImg >= 300) &
+      (dataWeatherImg <= 531) &
+      (currentTime <= sunriseTime) &
+      (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/rainy_night.png");
+    } else if (
+      (dataWeatherImg >= 600) &
+      (dataWeatherImg <= 622) &
+      (currentTime >= sunriseTime) &
+      (currentTime <= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/snowy_day.png");
+    } else if (
+      (dataWeatherImg >= 600) &
+      (dataWeatherImg <= 622) &
+      (currentTime <= sunriseTime) &
+      (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/snowy_night.png");
+    } else if ((dataWeatherImg >= 701) & (dataWeatherImg <= 771)) {
       weatherImg.setAttribute("src", "./images/weather/foog.png");
-    } else if ((data.cod = 781)) {
+    } else if (dataWeatherImg >= 600 == 781) {
       weatherImg.setAttribute("src", "./images/weather/tornado.png");
-    } else if ((data.cod = 800)) {
+    } else if (
+      (dataWeatherImg == 800) &
+      (currentTime >= sunriseTime) &
+      (currentTime <= sunsetTime)
+    ) {
       weatherImg.setAttribute("src", "./images/weather/sun.png");
-    } else if ((data.cod >= 801) & (data.cod <= 804)) {
-      weatherImg.setAttribute("src", "./images/weather/cloud.png");
+    } else if (
+      (dataWeatherImg == 800) &
+      (currentTime <= sunriseTime) &
+      (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/moon.png");
+    } else if (
+      (dataWeatherImg >= 801) &
+      (dataWeatherImg <= 804) &
+      (currentTime >= sunriseTime) &
+      (currentTime <= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/cloudy_day.png");
+    } else if (
+      (dataWeatherImg >= 801) &
+      (dataWeatherImg <= 804) &
+      (currentTime <= sunriseTime) &
+      (currentTime >= sunsetTime)
+    ) {
+      weatherImg.setAttribute("src", "./images/weather/cloudy_night.png");
     }
-    console.log(data);
   }
 
   function failure() {
