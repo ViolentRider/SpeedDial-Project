@@ -25,7 +25,7 @@
 ## About The Project
 <img src="images/speedDialReadMe2.PNG" alt="pageView" width="100%" height="100%">
 
-SpeedDial-Projec is a website build on flexbox, using css styling and JavaScript functions. 
+SpeedDial-Project is a website build on flexbox, using css styling and JavaScript functions. 
 * Menu items are displayed dynamically using JavaScript methods.
 * Plus button is used to create new speed dial item. Modal has a simple regexp object to check the webpage adress.
 * To add your icon you should place it in the images folder and fill the url field in modal section with this pattern: "./images/yourIconName".
