@@ -9,7 +9,7 @@
   <br />
     <br/>
     <br/>
-    <a href="https://violentrider.github.io/SpeedDial-Project/"><strong>Explore the website</strong></a>
+    <a href="https://bartosz-bednarski.github.io/SpeedDial-Project/"><strong>Explore the website</strong></a>
     <br />
     
   </p>
@@ -51,6 +51,6 @@ SpeedDial-Project is a website build on flexbox, using css styling and JavaScrip
 
 Bartosz Bednarski - bartosz.bednarski97@gmail.com
 
-Project Link: [https://github.com/ViolentRider/SpeedDial-Project](https://github.com/ViolentRider/SpeedDial-Project)
+Project Link: [https://github.com/bartosz-bednarski/SpeedDial-Project](https://github.com/bartosz-bednarski/SpeedDial-Project)
 
 
